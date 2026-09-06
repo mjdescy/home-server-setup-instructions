@@ -4,7 +4,7 @@
 
 The system drive on this server has to be a USB drive. There is an internal USB port on the motherboard that is used for this purpose. The USB drive should be at least 32GB in size and formatted with a Linux filesystem (ext4 is recommended).
 
-The Debian 13 installer fails to detect the USB drive as a valid installation target for certain USB sticks. I had no luck with a Buffalo 500 GB SSD drive with a USB 3.0 interface, but a SanDisk 32 GB USB 3.0 drive worked fine. If you have trouble with booting from the USB drive after an installation, try a different USB drive. Do not both trying to get GRUB or extlinux to work on a USB drive that is not working after the first installation attempt. Just try a different USB drive.
+The Debian 13 installer fails to detect the USB drive as a valid installation target for certain USB sticks. I had no luck with a Buffalo 500 GB SSD drive with a USB 3.0 interface, but a SanDisk 32 GB USB 3.0 drive worked fine. If you have trouble with booting from the USB drive after an installation, try a different USB drive. Do not bother trying to get GRUB or extlinux to work on a USB drive that is not working after the first installation attempt. Just try a different USB drive.
 
 ## Step 1: Install Debian
 
@@ -25,7 +25,7 @@ The Debian 13 installer fails to detect the USB drive as a valid installation ta
 Add contributed repositories to the sources list for additional software packages such as OpenZFS.
 
 ```sh
-sed -i 's/ main/ main contrib/g' /etc/apt/sources.list
+sudo sed -i 's/ main/ main contrib/g' /etc/apt/sources.list.d
 ```
 
 ### Step 2.2: Update the system packages

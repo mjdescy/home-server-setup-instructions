@@ -1,5 +1,7 @@
 [Unit]
 Description=Karakeep
+Wants=karakeep-meilisearch.service karakeep-chrome.service
+After=karakeep-meilisearch.service karakeep-chrome.service
 
 [Container]
 ContainerName=karakeep

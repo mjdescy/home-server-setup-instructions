@@ -4,13 +4,13 @@
 
 | Hostname | Domain Name           | Description                                 | Operating System |
 | -------- | --------------------- | ------------------------------------------- | ---------------- |
-| prod     | prod.lan.19781013.syz | Production server hosting critical services | Debian 13        |
+| prod     | prod.lan.19781013.xyz | Production server hosting critical services | Debian 13        |
 
 ## Hardware Specifications
 
 | Manufacturer | Model | Processor  | RAM  | System Disk  | Storage Disks | Network Interfaces                                |
 | ------------ | ----- | ---------- | ---- | ------------ | ------------- | ------------------------------------------------- |
-| BeeLink      | EQ14  | Intel N150 | 16GB | 1x 512GB SSD | 1 4TB SSD     | 2x Gigabit Ethernet; 1x WiFi 6 (currently unused) |
+| BeeLink      | EQ14  | Intel N150 | 16GB | 1x 512GB SSD | 1x 4TB SSD    | 2x Gigabit Ethernet; 1x WiFi 6 (currently unused) |
 
 ## Purpose
 

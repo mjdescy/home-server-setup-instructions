@@ -14,11 +14,11 @@
 
 ## Purpose
 
-The backup server is a HP ProLiant MicroServer N54L. Its boot drive is a USB flash drive, and it has two four 3.5" hard drives for storage. The server is configured to provide redundancy and data protection for the production server and client machines on the local network, ensuring that critical data is safe in case of hardware failure or other issues.
+The backup server is a HP ProLiant MicroServer N54L. Its boot drive is a USB flash drive, and it has four 3.5" hard drives for storage. The server is configured to provide redundancy and data protection for the production server and client machines on the local network, ensuring that critical data is safe in case of hardware failure or other issues.
 
 ## Services
 
-The following services are hosted on the production server and are run natively and were installed via the Debian package manager:
+The following services are hosted on the backup server and are run natively and were installed via the Debian package manager:
 
 - Secure file transfer for backup and ZFS replication: OpenSSH
 - Backup: rsync
@@ -43,8 +43,10 @@ NFS is installed on the server to allow for file shares to be created if necessa
 
 1. [Install Debian][1]
 2. [Install and configure OpenZFS][2]
-3. [Install and configure Sanoid and Syncoid][3]
+3. [Add users][3]
+4. [Install and configure Sanoid and Syncoid][4]
 
 [1]: ./01%20Install%20Debian.md
 [2]: ./02%20Install%20OpenZFS.md
-[3]: ./03%20Install%20Sanoid%20and%20Syncoid.md
+[3]: ./03%20Add%20Users.md
+[4]: ./04%20Install%20Sanoid%20and%20Syncoid.md

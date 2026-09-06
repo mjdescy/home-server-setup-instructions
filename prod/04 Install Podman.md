@@ -66,14 +66,19 @@ The environment files and data directories are stored in the `prod/env_data` dir
 
 ## Step 5: Enable and start the Podman services
 
-Enable and start the Podman services using the following commands:
+Enable and start the Podman services using the following commands (run as user `mjdescy`). Enabling the services ensures that they start automatically at boot:
 
     ```sh
-    systemctl --user start caddy
-    systemctl --user start jellyfin
-    systemctl --user start sabnzbd
-    systemctl --user start radarr
-    systemctl --user start sonarr
-    systemctl --user start karakeep
-    systemctl --user start paperless
+    systemctl --user enable --now proxy.network
+    systemctl --user enable --now caddy
+    systemctl --user enable --now jellyfin
+    systemctl --user enable --now sabnzbd
+    systemctl --user enable --now radarr
+    systemctl --user enable --now sonarr
+    systemctl --user enable --now karakeep-meilisearch
+    systemctl --user enable --now karakeep-chrome
+    systemctl --user enable --now karakeep
+    systemctl --user enable --now paperless-db
+    systemctl --user enable --now paperless-broker
+    systemctl --user enable --now paperless
     ```

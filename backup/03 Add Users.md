@@ -62,13 +62,47 @@ To prepare the backup server for SSH key-based authentication using one user acc
     sudo chown -R swdescy:swdescy /home/swdescy/.ssh
     sudo chmod 700 /home/swdescy/.ssh
     sudo chmod 600 /home/swdescy/.ssh/authorized_keys
+
+    sudo mkdir /home/prod/.ssh
+    sudo touch /home/prod/.ssh/authorized_keys
+    sudo chown -R prod:prod /home/prod/.ssh
+    sudo chmod 700 /home/prod/.ssh
+    sudo chmod 600 /home/prod/.ssh/authorized_keys
     ```
 
 Then, set up SSH key-based authentication for each user. Generate an SSH key pair on each client and server, and copy the public keys to the backup server's corresponding user accounts. SSH keys can be copied by using the `ssh-copy-id` command or by manually appending the public key to the `authorized_keys` file on the backup server. For example, on each client/server, for each user account on the backup server, run:
 
     ```sh
-    ssh-keygen -t id_ed25519 -f ~/.ssh/id_ed25519 -N ""
+    ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N ""
     ssh-copy-id -i ~/.ssh/id_ed25519.pub user@backup-server-ip
     ```
 
 In the example above, replace `user` with the username of the backup user account on the backup server (e.g., `swdescy`, `ejdescy`, `asdescy`, or `prod`), and replace `backup-server-ip` with the IP address or hostname of the backup server.
+
+### SSH key for the production server backup (Syncoid)
+
+The SSH key used for the production server backup is set up in the opposite direction from the client keys above. Syncoid runs on the backup server as the `prod` user and connects **to** the production server over SSH. The `prod` user on the backup server therefore needs an SSH key pair, and its **public** key must be installed in the `mjdescy` user's `authorized_keys` file on the production server.
+
+Generate the SSH key pair for the `prod` user on the backup server:
+
+    ```sh
+    sudo -u prod ssh-keygen -t ed25519 -f /home/prod/.ssh/id_ed25519 -N ""
+    ```
+
+Install the public key in the `mjdescy` user's `authorized_keys` file on the production server. From the backup server, as the `prod` user, copy the public key to the production server:
+
+    ```sh
+    sudo -u prod ssh-copy-id -i /home/prod/.ssh/id_ed25519.pub mjdescy@prod.lan.19781013.xyz
+    ```
+
+Alternatively, manually append the contents of `/home/prod/.ssh/id_ed25519.pub` on the backup server to `/home/mjdescy/.ssh/authorized_keys` on the production server.
+
+Verify that the `prod` user on the backup server can connect to the production server without a password:
+
+    ```sh
+    sudo -u prod ssh -i /home/prod/.ssh/id_ed25519 mjdescy@prod.lan.19781013.xyz
+    ```
+
+This is the SSH key referenced by the `SSH_KEY` variable in the Syncoid backup script (see [Install Sanoid and Syncoid][sanoid-syncoid]).
+
+[sanoid-syncoid]: ./04%20Install%20Sanoid%20and%20Syncoid.md

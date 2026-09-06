@@ -4,7 +4,7 @@ Sanoid is a snapshot management tool for ZFS that allows you to automate the cre
 
 ## Step 1: Install
 
-Sanoid is installed via the `sanoid` package, which is available in the Debian repositories. Install Sanoid with the following command:
+Sanoid is installed via the `sanoid` package, which is available in the Debian repositories. The `sanoid` package was already installed in the previous step. If you have not yet installed the `sanoid` package, you can do so by running the following command:
 
     ```sh
     sudo apt install -y sanoid
@@ -12,7 +12,7 @@ Sanoid is installed via the `sanoid` package, which is available in the Debian r
 
 ## Step 2: Configure Sanoid
 
-On the backup server, the Sanoid configuration file is located at `/etc/sanoid/sanoid.conf`. This file contains the configuration for Sanoid, including the snapshot retention policies for each ZFS dataset.
+On the prod server, the Sanoid configuration file is located at `/etc/sanoid/sanoid.conf`. This file contains the configuration for Sanoid, including the snapshot retention policies for each ZFS dataset.
 
 ### Step 2.1: Create a configuration file for Sanoid
 

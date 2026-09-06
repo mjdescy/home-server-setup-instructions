@@ -10,10 +10,10 @@ Clients will be backed up to the `clientbackup` ZFS pool, while servers will be 
 The services we plan to run on the backup server are OpenSSH, OpenZFS, NFS, sanoid, rsync, and borgbackup. OpenSSH is installed during the Debian installation process. To reduce the number of installation commands, we will install the other packages in one command, as follows:
 
     ```sh
-    sudo apt install -y linux-headers-$(uname -r) zfs-dkms zfsutils-linux zfs-zed nfs-kernel-server nfs-common rsync borgbackup
+    sudo apt install -y linux-headers-$(uname -r) zfs-dkms zfsutils-linux zfs-zed nfs-kernel-server nfs-common sanoid rsync borgbackup
     ```
 
-The `linux-headers-$(uname -r)` package is required for building the ZFS kernel module. The `zfs-dkms` package provides the ZFS kernel module, while the `zfsutils-linux` package provides the user-space utilities for managing ZFS. The `zfs-zed` package provides the ZFS Event Daemon, which monitors ZFS events and can trigger actions based on those events. The `nfs-kernel-server` and `nfs-common` packages provide NFS server and client functionality, respectively. The `rsync` package provides a utility for efficiently transferring and synchronizing files between systems. The `borgbackup` package provides a deduplicating backup program that supports compression and encryption.
+The `linux-headers-$(uname -r)` package is required for building the ZFS kernel module. The `zfs-dkms` package provides the ZFS kernel module, while the `zfsutils-linux` package provides the user-space utilities for managing ZFS. The `zfs-zed` package provides the ZFS Event Daemon, which monitors ZFS events and can trigger actions based on those events. The `nfs-kernel-server` and `nfs-common` packages provide NFS server and client functionality, respectively. The `sanoid` package provides Sanoid and Syncoid, which manage ZFS snapshots and replicate ZFS datasets between servers (configured in a later step). The `rsync` package provides a utility for efficiently transferring and synchronizing files between systems. The `borgbackup` package provides a deduplicating backup program that supports compression and encryption.
 
 The installation process for zfs-dkms may take a few minutes, as it compiles the ZFS kernel module for the current kernel version. Once the installation is complete, you can verify that the ZFS kernel module is loaded by running the following command:
 
@@ -25,7 +25,7 @@ Note that NFS is installed but we do not plan to enable it until we have a need 
 
 ## Step 2: Configure ZFS pools and datasets
 
-For the backup server, we will create two ZFS pools: one for client backups and one for server backups. Each pool will have its own datasets for each user and computer being backed up. The ZFS pools and datasets will be created on the two 3.5" hard drives in the backup server.
+For the backup server, we will create two ZFS pools: one for client backups and one for server backups. Each pool will have its own datasets for each user and computer being backed up. The ZFS pools and datasets will be created on the four 3.5" hard drives in the backup server.
 
 ### Step 2.1: Create folders for ZFS pools
 

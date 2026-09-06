@@ -8,17 +8,17 @@ Syncoid is a wrapper around the `zfs send` and `zfs receive` commands, which are
 
 Both Sanoid and Syncoid are installed via the `sanoid` package, which is available in the Debian repositories. The `sanoid` package includes both Sanoid and Syncoid, as well as a configuration file for Sanoid.
 
-This package was already installed in the previous step when we installed the `zfsutils-linux` package, which is a dependency of the `sanoid` package. If you have not yet installed the `sanoid` package, you can do so by running the following command:
+The `sanoid` package was already installed in the previous step. If you have not yet installed the `sanoid` package, you can do so by running the following command:
 
 ```sh
 sudo apt install -y sanoid
 ```
 
-## Step 3: Configure Sanoid
+## Step 2: Configure Sanoid
 
 On the backup server, the Sanoid configuration file is located at `/etc/sanoid/sanoid.conf`. This file contains the configuration for Sanoid, including the snapshot retention policies for each ZFS dataset.
 
-### Step 3.1: Create a configuration file for Sanoid
+### Step 2.1: Create a configuration file for Sanoid
 
 Create a configuration file for sanoid at `/etc/sanoid/sanoid.conf` with the following content (it is important that autosnap is set to "no" and autoprune is set to "yes"):
 
@@ -79,8 +79,8 @@ Create a file at `/usr/local/sbin/syncoid-backup.sh` with the following content 
     #!/usr/bin/env bash
     # /usr/local/sbin/syncoid-backup.sh
     # Edit these lines as your "configuration":
-    SSH_KEY="/home/prod/.ssh/syncoid_ed25519"
-    SOURCE="tank"
+    SSH_KEY="/home/prod/.ssh/id_ed25519"
+    SOURCE="mjdescy@prod.lan.19781013.xyz:tank"
     TARGET="serverbackup/server/prod/tank"
 
     exec /usr/sbin/syncoid \
@@ -90,7 +90,7 @@ Create a file at `/usr/local/sbin/syncoid-backup.sh` with the following content 
         "$SOURCE" "$TARGET"
     ```
 
-Note: In the example above, replace `tank` with the name of the ZFS pool on the production server that you want to back up, and replace `serverbackup/server/prod/tank` with the path to the ZFS dataset on the backup server where you want to store the backup. You may also need to adjust the `SSH_KEY` variable to point to the correct SSH key for the backup user on the production server.
+Note: In the example above, replace `mjdescy@prod.lan.19781013.xyz` with the SSH user and hostname or IP address used to reach the production server (the account that the syncoid SSH key authenticates as on the production server), replace `tank` with the name of the ZFS pool on the production server that you want to back up, and replace `serverbackup/server/prod/tank` with the path to the ZFS dataset on the backup server where you want to store the backup. You may also need to adjust the `SSH_KEY` variable to point to the correct SSH key on the backup server. The SSH key pair for the `prod` user on the backup server, and the installation of its public key on the production server, are described in the [Add users][add-users] step. The `mjdescy` user on the production server must also be able to run `zfs send` and `zfs list` on the source pool (for example, via sudo) for Syncoid to replicate it.
 
 ### Step 4.2: Create a systemd service for Syncoid backups
 
@@ -137,3 +137,5 @@ sudo systemctl enable --now syncoid-backup.timer
 sudo systemctl start syncoid-backup.service   # manual first run
 journalctl -u syncoid-backup.service -f
 ```
+
+[add-users]: ./03%20Add%20Users.md

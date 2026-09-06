@@ -4,7 +4,7 @@
 
 | Hostname | Domain Name              | Description                                | Operating System |
 | -------- | ------------------------ | ------------------------------------------ | ---------------- |
-| homelab  | homelab.lan.19781013.syz | Homelab server for testing and development | Debian 13        |
+| homelab  | homelab.lan.19781013.xyz | Homelab server for testing and development | Debian 13        |
 
 ## Hardware Specifications
 

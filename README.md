@@ -4,12 +4,17 @@ This repository contains instructions and scripts for setting up the servers in 
 
 ## Servers
 
-| Hostname | Description                                                     | Hardware                                                              | Operating System |
-| -------- | --------------------------------------------------------------- | --------------------------------------------------------------------- | ---------------- |
-| prod     | Production server hosting critical services                     | BeeLink EQ14, Intel N150, 16GB RAM, 500GB SSD system disk, 4 TB SSD   | Debian 13        |
-| backup   | Backup server for the production server and client computers    | HP N54L, AMD Phenom II, 16GB RAM, 1x USB 64GB system disk, 4x 4TB HDD | Debian 13        |
-| homelab  | Homelab server for testing and development                      | Lenovo ThinkCentre AMD Ryzen 5 PRO, 8 GB RAM, 240GB SSD               | Debian 13        |
-| firewall | Firewall server providing network security and VPN connectivity | BeeLink EQ14, Intel N150, 16GB RAM, 500GB SSD system disk             | OPNsense 26.7     |
+| Hostname | Description                                                     | Hardware                                                              | Operating System | Setup Guide   |
+| -------- | --------------------------------------------------------------- | --------------------------------------------------------------------- | ---------------- | ------------- |
+| prod     | Production server hosting critical services                     | BeeLink EQ14, Intel N150, 16GB RAM, 500GB SSD system disk, 4 TB SSD   | Debian 13        | [Overview][1] |
+| backup   | Backup server for the production server and client computers    | HP N54L, AMD Phenom II, 16GB RAM, 1x USB 64GB system disk, 4x 4TB HDD | Debian 13        | [Overview][2] |
+| homelab  | Homelab server for testing and development                      | Lenovo ThinkCentre, AMD Ryzen 5 PRO, 8 GB RAM, 240GB SSD              | Debian 13        | [Overview][3] |
+| firewall | Firewall server providing network security and VPN connectivity | BeeLink EQ14, Intel N150, 16GB RAM, 500GB SSD system disk             | OPNsense 26.7    | [Overview][4] |
+
+[1]: prod/00%20Overview.md
+[2]: backup/00%20Overview.md
+[3]: homelab/00%20Overview.md
+[4]: firewall/00%20Overview.md
 
 ## Network Configuration
 

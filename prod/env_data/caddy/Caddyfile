@@ -1,0 +1,62 @@
+prod.lan.19781013.xyz {
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+	    resolvers 1.1.1.1 8.8.8.8
+    }
+
+    respond "Hello from prod"
+}
+
+sabnzbd.prod.lan.19781013.xyz {
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+	    resolvers 1.1.1.1 8.8.8.8
+    }
+
+    reverse_proxy sabnzbd:8080
+}
+
+radarr.prod.lan.19781013.xyz {
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+	    resolvers 1.1.1.1 8.8.8.8
+    }
+
+    reverse_proxy radarr:7878
+}
+
+sonarr.prod.lan.19781013.xyz {
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+	    resolvers 1.1.1.1 8.8.8.8
+    }
+
+    reverse_proxy sonarr:8989
+}
+
+jellyfin.prod.lan.19781013.xyz {
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+	    resolvers 1.1.1.1 8.8.8.8
+    }
+
+    reverse_proxy jellyfin:8096
+}
+
+karakeep.prod.lan.19781013.xyz {
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+	    resolvers 1.1.1.1 8.8.8.8
+    }
+
+    reverse_proxy karakeep:3000
+}
+
+paperless.prod.lan.19781013.xyz {
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+	    resolvers 1.1.1.1 8.8.8.8
+    }
+
+    reverse_proxy paperless:8000
+}

@@ -1,0 +1,20 @@
+[Unit]
+Description=Paperless PostgreSQL database
+
+[Container]
+ContainerName=paperless-db
+Image=docker.io/library/postgres:18.6
+AutoUpdate=registry
+UserNS=keep-id
+User=1000:1000
+EnvironmentFile=/home/mjdescy/prod/paperless/.env
+
+Network=proxy.network
+
+Volume=/home/mjdescy/prod/paperless/pgdata:/var/lib/postgresql:Z
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

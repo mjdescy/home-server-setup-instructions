@@ -1,0 +1,25 @@
+[Unit]
+Description=Jellyfin
+
+[Container]
+ContainerName=jellyfin
+Image=docker.io/jellyfin/jellyfin:10.11.11
+AutoUpdate=registry
+UserNS=keep-id
+AddDevice=/dev/dri:/dev/dri
+GroupAdd=992
+
+Network=proxy.network
+
+Volume=/home/mjdescy/prod/jellyfin/config:/config:Z
+Volume=/home/mjdescy/prod/jellyfin/cache:/cache:Z
+Volume=/tank/video/movies:/media/video/movies:ro,Z
+Volume=/tank/video/tv:/media/video/tv:ro,Z
+
+# PublishPort=8096:8096
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,23 @@
+[Unit]
+Description=Radarr
+
+[Container]
+ContainerName=radarr
+Image=lscr.io/linuxserver/radarr:version-6.3.0.10514
+AutoUpdate=registry
+UserNS=keep-id
+EnvironmentFile=/home/mjdescy/prod/radarr/.env
+
+Network=proxy.network
+
+Volume=/home/mjdescy/prod/radarr/config:/config:Z
+Volume=/tank/video/movies:/movies:Z
+Volume=/home/mjdescy/prod/sabnzbd/config/Downloads/complete:/downloads:Z
+
+# PublishPort=7878:7878
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

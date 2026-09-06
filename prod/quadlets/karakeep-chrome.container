@@ -1,0 +1,17 @@
+[Unit]
+Description=Karakeep Chrome
+
+[Container]
+ContainerName=chrome
+Image=ghcr.io/karakeep-app/karakeep-chrome:151.0.7922.47-r1
+AutoUpdate=registry
+PodmanArgs=--init
+Exec=--disable-gpu --disable-dev-shm-usage --hide-scrollbars --disable-blink-features=AutomationControlled --window-size=1440,900
+
+Network=proxy.network
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,8 @@
+[Unit]
+Description=Podman network for prod services
+
+[Network]
+NetworkName=proxy
+
+[Install]
+WantedBy=default.target

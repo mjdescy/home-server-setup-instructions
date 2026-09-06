@@ -1,0 +1,21 @@
+[Unit]
+Description=Sabnzbd
+
+[Container]
+ContainerName=sabnzbd
+Image=lscr.io/linuxserver/sabnzbd:5.1.2
+AutoUpdate=registry
+UserNS=keep-id
+EnvironmentFile=/home/mjdescy/prod/sabnzbd/.env
+
+Network=proxy.network
+
+Volume=/home/mjdescy/prod/sabnzbd/config:/config:Z
+
+# PublishPort=8080:8080
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

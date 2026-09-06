@@ -1,0 +1,23 @@
+[Unit]
+Description=Karakeep
+
+[Container]
+ContainerName=karakeep
+Image=ghcr.io/karakeep-app/karakeep:0.33.2
+AutoUpdate=registry
+EnvironmentFile=/home/mjdescy/prod/karakeep/.env
+Environment=MEILI_ADDR=http://meilisearch:7700
+Environment=BROWSER_WEB_URL=http://chrome:9222
+Environment=DATA_DIR=/data
+
+Network=proxy.network
+
+Volume=/home/mjdescy/prod/karakeep/data:/data:Z
+
+# PublishPort=3000:3000
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

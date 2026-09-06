@@ -1,0 +1,19 @@
+[Unit]
+Description=Karakeep Meilisearch
+
+[Container]
+ContainerName=meilisearch
+Image=docker.io/getmeili/meilisearch:v1.41.0
+AutoUpdate=registry
+EnvironmentFile=/home/mjdescy/prod/karakeep/.env
+Environment=MEILI_NO_ANALYTICS=true
+
+Network=proxy.network
+
+Volume=/home/mjdescy/prod/karakeep/data/meilisearch:/meili_data:Z
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

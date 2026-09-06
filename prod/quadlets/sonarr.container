@@ -1,0 +1,23 @@
+[Unit]
+Description=Sonarr
+
+[Container]
+ContainerName=sonarr
+Image=lscr.io/linuxserver/sonarr:version-4.0.19.2979
+AutoUpdate=registry
+UserNS=keep-id
+EnvironmentFile=/home/mjdescy/prod/sonarr/.env
+
+Network=proxy.network
+
+Volume=/home/mjdescy/prod/sonarr/config:/config:Z
+Volume=/tank/video/tv:/tv:Z
+Volume=/home/mjdescy/prod/sabnzbd/config/Downloads/complete:/downloads:Z
+
+# PublishPort=8989:8989
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

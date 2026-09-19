@@ -13,8 +13,8 @@ Network=proxy.network
 
 Volume=/home/mjdescy/prod/jellyfin/config:/config:Z
 Volume=/home/mjdescy/prod/jellyfin/cache:/cache:Z
-Volume=/tank/video/movies:/media/video/movies:ro,Z
-Volume=/tank/video/tv:/media/video/tv:ro,Z
+Volume=/tank/video/movies:/media/video/movies:ro,z
+Volume=/tank/video/tv:/media/video/tv:ro,z
 
 # PublishPort=8096:8096
 

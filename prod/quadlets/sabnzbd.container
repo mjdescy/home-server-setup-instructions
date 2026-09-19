@@ -3,7 +3,7 @@ Description=Sabnzbd
 
 [Container]
 ContainerName=sabnzbd
-Image=lscr.io/linuxserver/sabnzbd:5.1.2
+Image=lscr.io/linuxserver/sabnzbd:5.1.3
 AutoUpdate=registry
 UserNS=keep-id
 EnvironmentFile=/home/mjdescy/prod/sabnzbd/.env
@@ -11,6 +11,7 @@ EnvironmentFile=/home/mjdescy/prod/sabnzbd/.env
 Network=proxy.network
 
 Volume=/home/mjdescy/prod/sabnzbd/config:/config:Z
+Volume=/tank/downloads/sabnzbd:/downloads:z
 
 # PublishPort=8080:8080
 

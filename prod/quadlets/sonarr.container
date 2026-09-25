@@ -12,7 +12,7 @@ Network=proxy.network
 
 Volume=/home/mjdescy/prod/sonarr/config:/config:Z
 Volume=/tank/video/tv:/tv:z
-Volume=/home/mjdescy/prod/sabnzbd/config/Downloads/complete:/downloads:z
+Volume=/home/mjdescy/prod/sabnzbd/config/Downloads:/downloads:z
 
 # PublishPort=8989:8989
 

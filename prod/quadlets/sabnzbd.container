@@ -11,7 +11,7 @@ EnvironmentFile=/home/mjdescy/prod/sabnzbd/.env
 Network=proxy.network
 
 Volume=/home/mjdescy/prod/sabnzbd/config:/config:Z
-Volume=/tank/downloads/sabnzbd:/downloads:z
+Volume=/home/mjdescy/prod/sabnzbd/config/Downloads:/downloads:z
 
 # PublishPort=8080:8080
 

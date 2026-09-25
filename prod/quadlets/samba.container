@@ -1,0 +1,19 @@
+[Unit]
+Description=Samba
+
+[Install]
+WantedBy=multi-user.target default.target
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Container]
+Image=registry.opensuse.org/opensuse/samba:latest
+
+Volume=/tank/paperless/consume:/mydata:z
+
+PublishPort=139:139
+PublishPort=445:445
+
+Exec=-s "paperless-consume:/mydata:true:false:true:mjdescy:mjdescy:mjdescy" -u "mjdescy:password"

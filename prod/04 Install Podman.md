@@ -81,4 +81,5 @@ Enable and start the Podman services using the following commands (run as user `
     systemctl --user enable --now paperless-db
     systemctl --user enable --now paperless-broker
     systemctl --user enable --now paperless
+    systemctl --user enable --now samba
     ```

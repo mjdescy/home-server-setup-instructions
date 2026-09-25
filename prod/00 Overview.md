@@ -27,6 +27,7 @@ The following user-facing services are hosted on the production server and are r
 - TV show manager: Sonarr
 - Browser bookmark manager: Karakeep
 - Paperless document manager: Paperless-ngx
+- File share for Paperless-ngx consume folder: Samba
 
 The following services are hosted on the production server and are run natively and were installed via the Debian package manager:
 
@@ -34,7 +35,9 @@ The following services are hosted on the production server and are run natively 
 - File sharing: NFS
 - Secure file transfer: OpenSSH
 
-All ZFS datasets are shared via NFS only. This setup was performed using ZFS's built-in NFS sharing capabilities, which allows for efficient and secure file sharing across the network.
+With the exception of the Samba share set up for the Paperless-ngx consume folder, all ZFS datasets are shared via NFS only. This setup was performed using ZFS's built-in NFS sharing capabilities, which allows for efficient and secure file sharing across the network.
+
+The reason Samba is necessary for the Paperless-ngx consume folder file share is that my scanners do not support NFS file shares.
 
 ## Virtualization
 

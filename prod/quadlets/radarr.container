@@ -3,7 +3,7 @@ Description=Radarr
 
 [Container]
 ContainerName=radarr
-Image=lscr.io/linuxserver/radarr:version-6.3.0.10514
+Image=lscr.io/linuxserver/radarr:version-6.4.4.10685
 AutoUpdate=registry
 UserNS=keep-id
 EnvironmentFile=/home/mjdescy/prod/radarr/.env
@@ -12,7 +12,7 @@ Network=proxy.network
 
 Volume=/home/mjdescy/prod/radarr/config:/config:Z
 Volume=/tank/video/movies:/movies:z
-Volume=/home/mjdescy/prod/sabnzbd/config/Downloads/complete:/downloads:z
+Volume=/home/mjdescy/prod/sabnzbd/config/Downloads:/downloads:z
 
 # PublishPort=7878:7878
 

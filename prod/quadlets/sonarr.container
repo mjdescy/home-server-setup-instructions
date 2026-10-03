@@ -3,7 +3,7 @@ Description=Sonarr
 
 [Container]
 ContainerName=sonarr
-Image=lscr.io/linuxserver/sonarr:version-4.0.19.2979
+Image=lscr.io/linuxserver/sonarr:version-4.0.20.3014
 AutoUpdate=registry
 UserNS=keep-id
 EnvironmentFile=/home/mjdescy/prod/sonarr/.env

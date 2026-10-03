@@ -3,7 +3,7 @@ Description=Jellyfin
 
 [Container]
 ContainerName=jellyfin
-Image=docker.io/jellyfin/jellyfin:10.11.11
+Image=docker.io/jellyfin/jellyfin:12.1
 AutoUpdate=registry
 UserNS=keep-id
 AddDevice=/dev/dri:/dev/dri

@@ -1,0 +1,10 @@
+[Unit]
+Description=Backup critical Filen folders to the local filesystem
+
+[Service]
+Type=oneshot
+User=mjdescy
+ExecStart=/usr/bin/rclone sync filen:/_inbox /clientbackup/client/michael/filen/_inbox --transfers 32 --checkers 16 --fast-list --check-first --checksum --create-empty-src-dirs --verbose --log-file /dev/stdout --stats 30s --retries 5 --retries-sleep 10s
+ExecStart=/usr/bin/rclone sync filen:/docs /clientbackup/client/michael/filen/docs --transfers 32 --checkers 16 --fast-list --check-first --checksum --create-empty-src-dirs --verbose --log-file /dev/stdout --stats 30s --retries 5 --retries-sleep 10s
+ExecStart=/usr/bin/rclone sync filen:/code /clientbackup/client/michael/filen/code --transfers 32 --checkers 16 --fast-list --check-first --checksum --create-empty-src-dirs --verbose --log-file /dev/stdout --stats 30s --retries 5 --retries-sleep 10s
+

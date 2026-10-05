@@ -69,6 +69,7 @@ As necessary, create ZFS datasets for each backup client (i.e., person) and comp
     sudo zfs create clientbackup/client/mjdescy
     sudo zfs create clientbackup/client/mjdescy/macmini
     sudo zfs create clientbackup/client/mjdescy/thinkpad
+    sudo zfs create clientbackup/client/mjdescy/filen
     sudo zfs create clientbackup/client/swdescy
     sudo zfs create clientbackup/client/swdescy/macbookair
     sudo zfs create clientbackup/client/swdescy/thinkpad

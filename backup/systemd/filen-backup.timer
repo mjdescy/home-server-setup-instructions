@@ -1,0 +1,10 @@
+[Unit]
+Description=Run Filen backup every 12 hours at 6:00 AM and 6:00 PM
+
+[Timer]
+OnCalendar=*-*-* 06,18:00:00
+RandomizedDelaySec=30m
+Persistent=true
+
+[Install]
+WantedBy=timers.target
